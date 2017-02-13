@@ -51,12 +51,34 @@ function getAndPrintHTML (options) {
       console.log(buffer);
     });
   });
+}
+
+function getHTML (options, cb) {
+
+  var buffer = "";
+
+  https.get(options, function (response) {
+    response.setEncoding('utf-8');
+
+    response.on('data', function (data) {
+      buffer += data;
+    });
+
+    response.on('end', function() {
+      cb(buffer);
+    });
+  });
 
 }
 
+function printHTML (html) {
+  console.log(html);
+}
+
+
 var requestOptions = {
   host: 'syntantris.github.io',
-  path: '/http-examples/step3.html'
+  path: '/http-examples/step4.html'
 };
 
-getAndPrintHTML(requestOptions);
+getAndPrintHTML(requestOptions, printHTML);
