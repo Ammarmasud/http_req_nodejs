@@ -81,4 +81,4 @@ var requestOptions = {
   path: '/http-examples/step4.html'
 };
 
-getAndPrintHTML(requestOptions, printHTML);
+getHTML(requestOptions, printHTML);
